@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🤖 DocChat – Chat with Your Documents
+---
 
-## Getting Started
+Overview
 
-First, run the development server:
+Chatbot App ("DocChat") is a web application that allows users to upload documents (PDF, JPG, PNG) and chat with an AI to extract information from the uploaded documents. The app is built using Next.js for the frontend, Firebase for authentication and database storage, and integrates with the Google Generative AI API for natural language processing. The app features a responsive UI with a sidebar for chat history, a document upload interface, and a chat window for interacting with the AI.
 
-```bash
+---
+
+## ✨ Features
+
+- 📁 **Document Upload**: Upload PDF, JPG, or PNG files to get started.
+- 💬 **AI-Powered Chat**: Ask questions about your document and get intelligent responses using the **Google Generative AI API**.
+- 🕑 **Chat History**: Access and switch between past conversations from a dedicated sidebar.
+- 📱 **Responsive Design**: Clean and adaptive layout optimized for both desktop and mobile use.
+- 🔐 **Authentication**: Secure sign-up and login using **Firebase Authentication**.
+
+---
+
+## Setup Instructions
+
+# 1. Clone the Repository
+If you haven’t already set up a GitHub repository, follow the instructions in the "GitHub Repository Setup" section below. Otherwise, clone the repository:
+git clone <repository-url>
+cd CHATBOT-APP
+
+# 2. Install Dependencies
+Install the required dependencies using npm:
+npm install
+
+# 3. Configure Environment Variables
+Create a .env.local file in the root directory and add the following environment variables:
+- NEXT_PUBLIC_GOOGLE_GENERATIVE_AI_API_KEY=<your-google-generative-ai-api-key>
+- NEXT_PUBLIC_FIREBASE_API_KEY=<your-firebase-api-key>
+- NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=<your-firebase-auth-domain>
+- NEXT_PUBLIC_FIREBASE_PROJECT_ID=<your-firebase-project-id>
+- NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=<your-firebase-storage-bucket>
+- NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=<your-firebase-messaging-sender-id>
+- NEXT_PUBLIC_FIREBASE_APP_ID=<your-firebase-app-id>
+
+
+Replace <your-...> with the actual values from your Firebase project and Google Cloud Console.
+Ensure .env.local is added to .gitignore to avoid committing sensitive information.
+
+# 4. Run the Development Server
+Start the Next.js development server:
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open your browser and navigate to http://localhost:3000 to see the app in action.
+# 5. Build for Production
+To build the app for production:
+npm run build
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Then start the production server:
+npm start
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 📸 Screenshots
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+![Desktop View](./public/images/one.png)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+![Desktop View](./public/images/two.png)
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
