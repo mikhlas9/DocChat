@@ -1,6 +1,9 @@
 # 🤖 DocChat – Chat with Your Documents
 ---
 
+# Live Link
+- https://doc-chat-kappa.vercel.app/
+
 Overview
 
 Chatbot App ("DocChat") is a web application that allows users to upload documents (PDF, JPG, PNG) and chat with an AI to extract information from the uploaded documents. The app is built using Next.js for the frontend, Firebase for authentication and database storage, and integrates with the Google Generative AI API for natural language processing. The app features a responsive UI with a sidebar for chat history, a document upload interface, and a chat window for interacting with the AI.
