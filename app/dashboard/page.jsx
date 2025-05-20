@@ -19,9 +19,16 @@ export default function Dashboard() {
     const [showUpload, setShowUpload] = useState(true);
     const [loading, setLoading] = useState(false);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false); // State for sidebar visibility on mobile
+    const [chatIdFromUrl, setChatIdFromUrl] = useState(null); // State to store chatId from URL
 
     const router = useRouter();
     const searchParams = useSearchParams();
+
+    // Use useEffect to safely access searchParams after the component mounts
+    useEffect(() => {
+        const chatId = searchParams.get('chatId');
+        setChatIdFromUrl(chatId);
+    }, [searchParams]);
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -29,7 +36,6 @@ export default function Dashboard() {
             if (currentUser) {
                 fetchChats(currentUser.uid);
 
-                const chatIdFromUrl = searchParams.get('chatId');
                 if (chatIdFromUrl) {
                     loadExistingChat(chatIdFromUrl, currentUser.uid);
                 } else {
@@ -38,7 +44,7 @@ export default function Dashboard() {
             }
         });
         return () => unsubscribe();
-    }, [searchParams]);
+    }, [chatIdFromUrl]); // Depend on chatIdFromUrl instead of searchParams directly
 
     const fetchChats = async (uid) => {
         const chatsCollection = collection(db, `users/${uid}/chats`);
@@ -202,3 +208,5 @@ export default function Dashboard() {
         </PrivateRoute>
     );
 }
+
+export const dynamic = 'force-dynamic'; // Add this to disable prerendering
