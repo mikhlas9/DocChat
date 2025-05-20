@@ -3,7 +3,7 @@ import { signOut } from 'firebase/auth';
 import { auth } from '../app/firebaseClient';
 import { useRouter } from 'next/navigation';
 
-export default function Header({ children }) { // Added children prop to render the hamburger menu
+export default function Header({ children }) { 
   const router = useRouter();
 
   const handleSignOut = async () => {
@@ -18,9 +18,8 @@ export default function Header({ children }) { // Added children prop to render 
   return (
     <header className="bg-white border-b border-gray-200 shadow-sm py-4 px-6">
       <div className="flex justify-between items-center">
-        {/* Left Side: Hamburger Menu (for mobile) */}
         <div className="flex items-center">
-          {children} {/* Render the hamburger menu button passed from Dashboard */}
+          {children} 
           <div className="text-xl font-bold text-blue-600 ml-2">DocChat</div>
         </div>
 

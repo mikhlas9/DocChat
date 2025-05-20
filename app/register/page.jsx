@@ -12,19 +12,30 @@ export default function Register() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  const handleRegister = async (e) => {
+ const handleRegister = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError('');
+
+    if (password.length < 6) {
+      setError('Password must be at least 6 characters long.');
+      setLoading(false);
+      return;
+    }
+
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       router.push('/dashboard');
     } catch (err) {
-      setError('Failed to register. Please try again.');
-     } finally {
+      if (err.code === 'auth/weak-password') {
+        setError('Password must be at least 6 characters long.');
+      } else {
+        setError('Failed to register. Please try again.');
+      }
+    } finally {
       setLoading(false);
     }
-  };
+};
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-100 to-purple-200 px-4">

@@ -10,7 +10,6 @@ import { db, auth } from '../firebaseClient';
 import { collection, addDoc, getDocs, doc, getDoc } from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth';
 
-// Create a separate component for the content that uses useSearchParams
 function DashboardContent() {
   const [uploadedFile, setUploadedFile] = useState(null);
   const [currentChatId, setCurrentChatId] = useState(null);
@@ -22,7 +21,6 @@ function DashboardContent() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const router = useRouter();
-  // Move useSearchParams to this component
   const { useSearchParams } = require('next/navigation');
   const searchParams = useSearchParams();
 
@@ -79,7 +77,7 @@ function DashboardContent() {
     setCurrentChat(null);
     setUploadedFile(null);
     setShowUpload(true);
-    setIsSidebarOpen(false); // Close sidebar on new chat
+    setIsSidebarOpen(false); 
     router.push('/dashboard');
   };
 
@@ -101,7 +99,7 @@ function DashboardContent() {
         setCurrentChat(newChat);
         setChats([chatWithId, ...chats]);
         setShowUpload(false);
-        setIsSidebarOpen(false); // Close sidebar on start chat
+        setIsSidebarOpen(false); 
 
         router.push(`/dashboard?chatId=${docRef.id}`);
       } catch (error) {
@@ -113,7 +111,7 @@ function DashboardContent() {
   };
 
   const selectChat = (chatId) => {
-    setIsSidebarOpen(false); // Close sidebar when selecting a chat
+    setIsSidebarOpen(false); 
     router.push(`/dashboard?chatId=${chatId}`);
   };
 
